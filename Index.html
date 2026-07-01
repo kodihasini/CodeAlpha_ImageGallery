@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Modern Image Gallery</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+
+        <i class="fa-solid fa-camera-retro"></i>
+
+        <span>Photo Gallery</span>
+
+    </div>
+
+    <ul>
+
+        <li><a href="#">Home</a></li>
+
+        <li><a href="#gallery">Gallery</a></li>
+
+        <li><a href="#footer">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>Discover Beautiful Moments</h1>
+
+    <p>
+
+        Explore breathtaking collections of Nature,
+        Food, City and Wildlife photography from
+        around the world.
+
+    </p>
+
+    <button onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+
+        Explore Gallery
+
+    </button>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-box">
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search images..."
+        onkeyup="searchImages()">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+</div>
+
+<!-- ================= FILTER BUTTONS ================= -->
+
+<div class="filters">
+
+    <button class="active"
+        onclick="filterImages('all',this)">
+        All
+    </button>
+
+    <button onclick="filterImages('nature',this)">
+        🌿 Nature
+    </button>
+
+    <button onclick="filterImages('city',this)">
+        🏙 City
+    </button>
+
+    <button onclick="filterImages('food',this)">
+        🍽 Food
+    </button>
+
+    <button onclick="filterImages('animals',this)">
+        🦌 Animals
+    </button>
+
+</div>
+
+<!-- ================= GALLERY ================= -->
+
+<section class="gallery" id="gallery">
+
+<!-- Card 1 -->
+
+<div class="image nature">
+
+    <img src="images/img1.png"
+         onclick="openLightbox(0)">
+
+    <div class="content">
+
+        <span class="badge">Nature</span>
+
+        <h3 class="title">
+
+            Adventure Trek
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 2 -->
+
+<div class="image nature">
+
+    <img src="images/img2.png"
+         onclick="openLightbox(1)">
+
+    <div class="content">
+
+        <span class="badge">Nature</span>
+
+        <h3 class="title">
+
+            Sunset Explorer
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 3 -->
+
+<div class="image city">
+
+    <img src="images/img3.png"
+         onclick="openLightbox(2)">
+
+    <div class="content">
+
+        <span class="badge">City</span>
+
+        <h3 class="title">
+
+            Historic Street
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 4 -->
+
+<div class="image city">
+
+    <img src="images/img4.png"
+         onclick="openLightbox(3)">
+
+    <div class="content">
+
+        <span class="badge">City</span>
+
+        <h3 class="title">
+
+            City Avenue
+
+        </h3>
+
+    </div>
+
+</div>
+<!-- Card 5 -->
+
+<div class="image food">
+
+    <img src="images/img5.png"
+         onclick="openLightbox(4)">
+
+    <div class="content">
+
+        <span class="badge">Food</span>
+
+        <h3 class="title">
+
+            Traditional Thali
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 6 -->
+
+<div class="image food">
+
+    <img src="images/img6.png"
+         onclick="openLightbox(5)">
+
+    <div class="content">
+
+        <span class="badge">Food</span>
+
+        <h3 class="title">
+
+            Italian Pasta
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 7 -->
+
+<div class="image animals">
+
+    <img src="images/img7.png"
+         onclick="openLightbox(6)">
+
+    <div class="content">
+
+        <span class="badge">Animals</span>
+
+        <h3 class="title">
+
+            Baby Deer
+
+        </h3>
+
+    </div>
+
+</div>
+
+<!-- Card 8 -->
+
+<div class="image animals">
+
+    <img src="images/img8.png"
+         onclick="openLightbox(7)">
+
+    <div class="content">
+
+        <span class="badge">Animals</span>
+
+        <h3 class="title">
+
+            Wild Deer
+
+        </h3>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div id="lightbox">
+
+    <span class="close"
+          onclick="closeLightbox()">
+
+        &times;
+
+    </span>
+
+    <button class="prev"
+            onclick="changeImage(-1)">
+
+        ❮
+
+    </button>
+
+    <img id="lightbox-img">
+
+    <button class="next"
+            onclick="changeImage(1)">
+
+        ❯
+
+    </button>
+
+</div>
+
+<!-- ================= SCROLL TO TOP ================= -->
+
+<button id="topBtn"
+        onclick="scrollToTop()">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="footer">
+
+    <h2>
+
+        📸 Photo Gallery
+
+    </h2>
+
+    <p>
+
+        Explore • Capture • Inspire
+
+    </p>
+
+    <div class="social">
+
+        <i class="fab fa-facebook-f"></i>
+
+        <i class="fab fa-instagram"></i>
+
+        <i class="fab fa-linkedin-in"></i>
+
+        <i class="fab fa-github"></i>
+
+    </div>
+
+    <p>
+
+        Designed & Developed by <strong>Kodi Hasini</strong>
+
+    </p>
+
+    <p>
+
+        © 2026 All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
